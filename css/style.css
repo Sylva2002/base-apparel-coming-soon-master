@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+:root{
+    /* Primary color */
+    --Desaturated-Red: hsl(0, 36%, 70%);
+    --Soft-Red: hsl(0, 93%, 68%);
+
+    /* Neutral */
+
+    --Dark-Grayish-Red: hsl(0, 6%, 24%);
+
+    /* Gradient */
+
+    --Gradient-1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+    --Gradient-2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+
+    /* Font size */
+
+    --font-size: 14px;
+}
+
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* dark mode user-agent-styles */
+
+/* html {
+  color-scheme: dark light;
+} */
+
+/* min body height */
+
+body {
+  min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+body{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: var(--font-size);
+    color: var(--Desaturated-Red);
+    background-image: var(--Gradient-1);
+}
+
+.header-mobile{
+    padding: 2rem ;
+
+}
+.header-mobile img{
+    width: 110px;
+}
+.header-desktop{
+    display: none;
+}
+.hero-section{
+    background-image: url(../images/hero-mobile.jpg);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    margin-bottom: 4rem;
+}
+.message-section{
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.message-section h1{
+    font-size: 40px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    line-height: 45px;
+}
+.message-section h1 span{
+    color: var(--Dark-Grayish-Red);
+    font-weight: 600;
+}
+.message-section p{
+  line-height: 25px;
+}
+.message-section-container > p{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.email-input{
+  position: relative;
+}
+.email-input label{
+  display: none;
+}
+.email-input input{
+  color: var(--Desaturated-Red);
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 1.5px solid var(--Desaturated-Red);
+  border-radius: 50px;
+  background-color: transparent;
+
+}
+.email-input input:invalid{
+  border: 1px solid var(--Soft-Red);
+}
+.email-input input:focus{
+  outline: transparent;
+}
+.email-input .email-input-absolute{
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+ position: absolute;
+ top: 0;
+ right: 0;
+}
+.email-input-absolute > img{
+  visibility: hidden;
+}
+.email-input-absolute > img.active{
+  visibility: visible;
+}
+.email-input button{
+  padding: 1em 1.8em;
+  border-radius: 50px;
+  border: none;
+  background-image: var(--Gradient-2);
+  box-shadow: 0px 20px 20px 0px hsla(0, 36%, 70%, 50%);
+  cursor: pointer;
+}
+.email-input button:hover{
+  background-image: linear-gradient(hsl(0, 80%, 86%) 0 0);
+  /* linear-gradient(hsl(0, 80%, 86%) 0 0) */
+  
+}
+
+.email-input button span{
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.error-msg{
+  visibility: hidden;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 0.4rem;
+  padding: 0 1.5rem ;
+  color: var(--Soft-Red);
+}
+.error-msg.active{
+  visibility: visible;
+}
+
+/* tablet mode */
+
+@media (min-width: 768px) {
+  body{
+    background-image: url(../images/bg-pattern-desktop.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .header-mobile{
+    display: none;
+  }
+  .header-desktop{
+    display: block;
+    margin-top: 4rem;
+    
+  }
+  .header-desktop img{
+    width: 110px;
+  }
+  .container{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    min-height: 100vh;
+  }
+  .hero-section{
+    grid-column: 2/3;
+    margin-bottom: 0;
+    background-image: url(../images/hero-desktop.jpg);
+    height: auto;
+  }
+  .message-section{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    text-align: left;
+    width: 445px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  .message-section-container > p{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  }
+  .message-section-container{
+    display: grid;
+    place-content: center;
+  }
+}
+
+/* Desktop mode */
+@media (min-width: 992px) {
+  :root{
+    --font-size: 16px;
+  }
+  .header-desktop img{
+    width: auto;
+  }
+  .message-section{
+    padding: 0;
+  }
+  .message-section h1{
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .email-input button{
+    padding: 1em 2.5em;
+  }
+}
